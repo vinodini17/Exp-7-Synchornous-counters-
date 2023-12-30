@@ -1,7 +1,11 @@
 # Exp-6-Synchornous-counters - up counter and down counter 
+
 ### AIM: To implement 4 bit up and down counters and validate  functionality.
-### HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
-### SOFTWARE REQUIRED:   Quartus prime
+
+HARDWARE REQUIRED:  – PC, Cyclone II , USB flasher
+
+SOFTWARE REQUIRED:   Quartus prime
+
 ### THEORY 
 
 ## UP COUNTER 
@@ -45,44 +49,105 @@ This type of counter is normally referred to as a Down Counter, (CTD). In a bina
 
 
 4-bit Count Down Counter
+
 ### Procedure
-/* write all the steps invloved */
 
+1.Create a New Project: Open Quartus and create a new project by selecting "File" > "New Project Wizard." Follow the wizard's instructions to set up your project, including specifying the project name, location, and target device (FPGA).
 
+2.Create a New Design File: Once the project is created, right-click on the project name in the Project Navigator and select "Add New File." Choose "Verilog HDL File".
 
-### PROGRAM 
-/*
-Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+3.Write the Combinational Logic Code: Open the newly created Verilog or VHDL file and write the code for your combinational logic.
 
+4.Compile the Project: To compile the project, click on "Processing" > "Start Compilation" in the menu. Quartus will analyze your code, synthesize it into a netlist, and perform optimizations based on your target FPGA device.
 
+5.Analyze and Fix Errors:* If there are any errors or warnings during the compilation process, Quartus will display them in the Messages window. Review and fix any issues in your code if necessary. View the RTL diagram.
 
-
-
-
-### RTL LOGIC UP COUNTER AND DOWN COUNTER  
+6.Verification: Click on "File" > "New" > "Verification/Debugging Files" > "University Program VWF". Once Waveform is created Right Click on the Input/Output Panel > " Insert Node or Bus" > Click on Node Finder > Click On "List" > Select All. Give the Input Combinations according to the Truth Table amd then simulate the Output waveform
 
 
 
 
+### PROGRAM:
+
+UPCOUNTER:
+
+module up_counter(clk,q1,q2,q3);	
+
+input clk;
+
+output reg q1,q2,q3; 
+
+always@(posedge clk) 
+
+begin
+
+q3=(q1&q2)^q3; q2=q1^q2;
+
+q1=1^q1;
+
+end
+
+endmodule
+
+DOWNCOUNTER:
+
+module COUNTER(clk,q1,q2,q3);
+
+input clk;
+
+output reg q1,q2,q3; 
+
+always@(posedge clk) 
+
+begin
+
+q3=((~q2)&(~q1))^q3; 
+
+q2=(~q1)^q2; q1=1^q1;
+
+end 
+
+endmodule
 
 
+Developed by: Vinodini R
+
+RegisterNumber:212223040244  
 
 
+### RTL LOGIC UP COUNTER AND DOWN COUNTER:  
 
-### TIMING DIGRAMS FOR COUNTER  
+UPCOUNTER:
 
+<img width="456" alt="image" src="https://github.com/vinodini17/Exp-7-Synchornous-counters-/assets/149347288/f2bb35d9-9468-4d5a-9a4a-6118104cc337">
 
+DOWNCOUNTER:
 
-
-
-### TRUTH TABLE 
-
-
-
+<img width="450" alt="image" src="https://github.com/vinodini17/Exp-7-Synchornous-counters-/assets/149347288/c2bd9388-e4ed-4554-ae3b-b9a658e8795f">
 
 
+### TIMING DIGRAMS FOR COUNTER:
 
-### RESULTS 
+UPCOUNTER:
+
+<img width="529" alt="image" src="https://github.com/vinodini17/Exp-7-Synchornous-counters-/assets/149347288/ace680bc-4162-482e-b406-2b87c34aaf0c">
+
+DOWNCOUNTER:
+
+<img width="523" alt="image" src="https://github.com/vinodini17/Exp-7-Synchornous-counters-/assets/149347288/ae5aa635-e2d1-4de6-b556-9abf95fbd02f">
+
+
+### TRUTH TABLE:
+
+UPCOUNTER:
+
+<img width="438" alt="image" src="https://github.com/vinodini17/Exp-7-Synchornous-counters-/assets/149347288/b21eaeb1-a7bf-441d-92ab-d890d6fcc49a">
+
+DOQWNCOUNTER:
+
+<img width="435" alt="image" src="https://github.com/vinodini17/Exp-7-Synchornous-counters-/assets/149347288/b5eee224-50c9-4dc7-88ad-46b77c77130f">
+
+
+### RESULTS:
+
+Thus synchornous counters up counter and down counter circuit are studied and the truth table for different logic gates are verified.
